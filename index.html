@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Firma de Gmail — Ana Cristina Velásquez</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px 18px;
+      color: #202124;
+      background: #f6f8fb;
+      font: 15px/1.5 Arial, Helvetica, sans-serif;
+    }
+    main {
+      width: min(720px, 100%);
+      margin: 0 auto;
+      padding: 28px;
+      background: #fff;
+      border: 1px solid #dfe3e8;
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(32, 33, 36, .08);
+    }
+    h1 { margin: 0 0 8px; font-size: 22px; }
+    p { margin: 0 0 18px; }
+    .preview {
+      overflow-x: auto;
+      padding: 22px;
+      border: 1px dashed #aeb4bb;
+      border-radius: 10px;
+      background: #fff;
+    }
+    button {
+      margin-top: 18px;
+      padding: 11px 18px;
+      color: #fff;
+      background: #7f0025;
+      border: 0;
+      border-radius: 7px;
+      font: 600 14px Arial, Helvetica, sans-serif;
+      cursor: pointer;
+    }
+    button:hover { background: #65001d; }
+    #status { min-height: 24px; margin: 10px 0 0; color: #137333; }
+    ol { margin: 18px 0 0; padding-left: 22px; }
+    li + li { margin-top: 5px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Firma de Ana Cristina Velásquez</h1>
+    <p>La firma se copiará con un ancho fijo de 520 px y conservará su proporción.</p>
+
+    <div class="preview">
+      <div id="signature">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; margin:0; padding:0;">
+          <tr>
+            <td style="margin:0; padding:0; line-height:0;">
+              <img
+                src="https://raw.githubusercontent.com/mantoperu/firma-ana-cristina-gmail/main/firma-ana-cristina.png"
+                width="520"
+                height="260"
+                alt="Ana Cristina Velásquez De La Cruz — Árbitra, Adjudicadora y Docente de Postgrado. Teléfono: +51 982 243 755. Correo: avelasquez@acconsultoresasociados.com"
+                style="display:block; width:520px; height:260px; max-width:100%; border:0; outline:none; text-decoration:none;"
+              >
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <button id="copy" type="button">Copiar firma</button>
+    <p id="status" role="status" aria-live="polite"></p>
+
+    <ol>
+      <li>Pulsa <strong>Copiar firma</strong>.</li>
+      <li>Abre Gmail → Configuración → Ver todos los ajustes → Firma.</li>
+      <li>Elimina la firma anterior y pega con <strong>Ctrl + V</strong>.</li>
+      <li>Guarda los cambios al final de la página.</li>
+    </ol>
+  </main>
+
+  <script>
+    const button = document.querySelector('#copy');
+    const signature = document.querySelector('#signature');
+    const status = document.querySelector('#status');
+
+    button.addEventListener('click', () => {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(signature);
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      try {
+        const copied = document.execCommand('copy');
+        status.textContent = copied
+          ? 'Firma copiada. Ahora pégala en Gmail.'
+          : 'Usa Ctrl + C para copiar la firma seleccionada.';
+      } catch {
+        status.textContent = 'Usa Ctrl + C para copiar la firma seleccionada.';
+      }
+    });
+  </script>
+</body>
+</html>
