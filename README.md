@@ -2,7 +2,7 @@
 
 Instalador HTML de la firma y su imagen pública.
 
-La firma se muestra a 520 × 260 px para mantener la proporción original sin ocupar demasiado espacio en Gmail.
+El nombre, los cargos y los datos de contacto son texto HTML seleccionable. El teléfono y el correo incluyen enlaces y solamente el sello se carga como imagen pública.
 
 ## Instalación
 
